@@ -47,14 +47,14 @@ class Doomsday:
 
     def _random_year(self):
         """Returns a random year between 1900 and 2099"""
-        year = random.randrange(1900, 2099)
+        year = random.randrange(1900, 2100)
         is_leap = self._is_leap(year)
 
         return (year, is_leap)
 
     def _random_month(self):
         """Returns a random month"""
-        return random.randrange(1, 12)
+        return random.randrange(1, 13)
 
     def _random_day(self, is_leap, month):
         """Returns a random day for a given month and potential leap year"""
@@ -68,7 +68,7 @@ class Doomsday:
             else:
                 days_in_month = 28
 
-        return random.randrange(1, days_in_month)
+        return random.randrange(1, days_in_month + 1)
 
     def _is_leap(self, year):
         """Returns True or False if year is a leap year"""

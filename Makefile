@@ -4,7 +4,7 @@ run:
 
 # Run tests
 test:
-	@python -m unittest discover -s . -p '*_test.py'
+	@python -m unittest discover -b tests -p '*_test.py'
 
 # Clean out the compiled files
 clean:
