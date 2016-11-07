@@ -16,6 +16,20 @@ One of the following might be randomly chosen:
  + What year was x born
  + Who is the author of x
 
+Intention
+---------
+
+This is intended to be run in your `.bashrc` (or `.zshrc`, `.profile` etc.) and
+so will start when a session is created.
+
+This might go something like:
+
+ > git clone git@github.com:Ganners/mental-gymnastics.git
+
+ > cd mental-gymnastics
+
+ > echo "# Start mental gymnastics game when session starts\npython ${PWD}/main.py" >> $HOME/.zshrc
+
 Interface
 ---------
 
