@@ -12,8 +12,7 @@ games_registry = [
 
 # Language strings
 lang = {
-    'seperator': '*' * 40,
-    'starting_game': "Starting random game '{0}'",
+    'starting_game': " Starting random game: {0} ",
     'submit_answer': "What is your answer?: ",
     'incorrect': "Sorry, that answer is incorrect. Please try again ({0} attempts remaining)",
     'correct': "Congratulations, that answer is correct",
@@ -33,9 +32,11 @@ def main():
         game = _choose_game()
 
         # Output the game
-        print(lang['seperator'])
-        print(lang['starting_game'].format(game.name))
-        print(lang['seperator'] + os.linesep)
+        starting_game = lang['starting_game'].format(game.name)
+        seperator = '*' * len(starting_game)
+        print(seperator)
+        print(starting_game)
+        print(seperator + os.linesep)
 
         # Get a question and validator function for the game
         question, validator = game.play_game()
@@ -47,7 +48,7 @@ def main():
         is_correct = False
         total_incorrect = 0
 
-        while is_correct == False:
+        while is_correct == False and total_incorrect < retry_limit:
             user_input = _ask_question(lang['submit_answer'])
             is_correct = validator(user_input)
 
@@ -57,12 +58,9 @@ def main():
                 remaining = retry_limit - total_incorrect
                 print(lang['incorrect'].format(remaining))
 
-            if total_incorrect >= retry_limit:
-                break
-
         if is_correct == False:
             print(lang['limit_reached'])
-            return
+            return # Must break out, probable infinite loop reached
 
         print(lang['correct'])
         total_correct += 1
