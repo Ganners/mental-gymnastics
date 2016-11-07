@@ -36,6 +36,11 @@ class ExampleGame:
             return int(string_input) == random_answer
 
         return (random_question, validate)
+
+    @property
+    def name(self):
+        """Returns the name of the game to be used in strings"""
+        return "This is the name of the game"
 ```
 
 The class will have a `play_game` function which will return a string (the
