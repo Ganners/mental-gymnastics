@@ -9,3 +9,4 @@ test:
 # Clean out the compiled files
 clean:
 	@find . -name '*.pyc' -delete
+	@find . -name '__pycache__' -delete
