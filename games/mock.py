@@ -14,3 +14,4 @@ class MockGame:
     @property
     def name(self):
         return "MockGame"
+
