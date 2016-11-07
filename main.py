@@ -17,9 +17,11 @@ lang = {
     'correct': "Congratulations, that answer is correct",
 }
 
+# How many correct answers are required to win?
+correct_required = 1
+
 def main():
 
-    correct_required = 1
     total_correct = 0
 
     while total_correct < correct_required:
