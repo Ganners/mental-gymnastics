@@ -8,9 +8,9 @@ class Doomsday:
     day of the week that date will fall on
     """
 
-    game_name = "Doomsday Game"
-    game_question = "What day of the week would {0} fall on? (1 = Monday ... 7 = Sunday)"
-    date_format = "%d/%m/%Y"
+    _game_name = "Doomsday Game"
+    _game_question = "What day of the week would {0} fall on? (1 = Monday ... 7 = Sunday)"
+    _date_format = "%d/%m/%Y"
 
     # Starts the game, returns a question string and validator function
     def play_game(self):
@@ -26,7 +26,7 @@ class Doomsday:
         correct_answer = date.weekday()
 
         # Generate question title
-        question = self.game_question.format(date.strftime(self.date_format))
+        question = self._game_question.format(date.strftime(self._date_format))
 
         # Create a validator
         def validator(answer):
@@ -43,7 +43,7 @@ class Doomsday:
     @property
     def name(self):
         """Returns the name of the game"""
-        return self.game_name
+        return self._game_name
 
     def _random_year(self):
         """Returns a random year between 1900 and 2099"""
