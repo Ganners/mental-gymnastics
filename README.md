@@ -10,11 +10,11 @@ Game types
 
 One of the following might be randomly chosen:
 
- + What day of the week would x fall on
- + What is the answer to x * y
- + What is the answer to x / y
- + What year was x born
- + Who is the author of x
+ + [x] What day of the week would x fall on
+ + [ ] What is the answer to x * y
+ + [ ] What is the answer to x / y
+ + [ ] What year was x born
+ + [ ] Who is the author of x
 
 Intention
 ---------
