@@ -4,6 +4,7 @@ import os
 import random
 import printer
 
+from datetime import datetime
 from games.doomsday import Doomsday
 from games.math import Math
 
@@ -28,6 +29,7 @@ retry_limit = 100
 
 def main():
 
+    random.seed(datetime.now())
     total_correct = 0
 
     while total_correct < correct_required:
