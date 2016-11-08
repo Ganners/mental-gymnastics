@@ -4,10 +4,12 @@ import os
 import random
 
 from games.doomsday import Doomsday
+from games.math import Math
 
 # Registry of games
 games_registry = [
-    Doomsday(),
+    # Doomsday(),
+    Math(),
 ]
 
 # Language strings
