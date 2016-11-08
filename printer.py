@@ -1,4 +1,4 @@
-
+# List of ANSI escape sequence colors for foreground printing
 colors = {
     'black': '0;30',
     'blue': '0;34',
@@ -18,7 +18,10 @@ colors = {
     'light_gray': '0;37',
 }
 
+# The escape sequence for using a color
 layout = '\033[{0}m'
+
+# Utility functions for common colors
 
 def red(string):
     _print_string(string, 'red', True)
@@ -33,9 +36,14 @@ def cyan(string):
     _print_string(string, 'cyan', True)
 
 def _print_string(string, color, do_print = False):
+    """Returns a string which will print to the terminal
+
+    if do_print is True then it will trigger the builtin print
+    """
     string = layout.format(colors[color]) + string + layout.format('0')
 
     if do_print:
         print(string)
 
     return string
+
