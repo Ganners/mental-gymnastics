@@ -3,9 +3,14 @@ class MockGame:
 
     _return_validator = lambda:  True
     _question = "Some Question"
+    _name = "Mock Game"
 
     def play_game(self):
-        return (self._question, self._return_validator)
+        """Returns a typle (string, func)
+
+        The function returned will validate user input
+        """
+        return self._question, self._return_validator
 
     def set_validator(self, validator_func):
         """Set the validator return value"""
@@ -13,5 +18,5 @@ class MockGame:
 
     @property
     def name(self):
-        return "MockGame"
+        return self._name
 

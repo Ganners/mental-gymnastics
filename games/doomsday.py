@@ -8,13 +8,16 @@ class Doomsday:
     day of the week that date will fall on
     """
 
-    _game_name = "Doomsday Game"
-    _game_question = "What day of the week would {0} fall on? (1 = Monday ... 7 = Sunday)"
+    _name = "Doomsday Game"
+    _question = "What day of the week would {0} fall on? (1 = Monday ... 7 = Sunday)"
     _date_format = "%d/%m/%Y"
 
     # Starts the game, returns a question string and validator function
     def play_game(self):
-        """Returns a date and a function to validate user input"""
+        """Returns a typle (string, func)
+
+        The function returned will validate user input
+        """
 
         # Pick a random date
         year, is_leap = self._random_year()
@@ -26,31 +29,31 @@ class Doomsday:
         correct_answer = date.weekday()
 
         # Generate question title
-        question = self._game_question.format(date.strftime(self._date_format))
+        question = self._question.format(date.strftime(self._date_format))
 
         # Create a validator
         def validator(answer):
             try:
                 # Shift the correct answer up so 1 becomes a Monday
-                return int(answer) == (correct_answer + 1)
+                return int(answer) == correct_answer + 1
             except ValueError:
                 # Couldn't convert to int, just return false
                 return False
 
-        return (question, validator)
+        return question, validator
 
     # Get the name of the game
     @property
     def name(self):
         """Returns the name of the game"""
-        return self._game_name
+        return self._name
 
     def _random_year(self):
         """Returns a random year between 1900 and 2099"""
         year = random.randrange(1900, 2100)
         is_leap = self._is_leap(year)
 
-        return (year, is_leap)
+        return year, is_leap
 
     def _random_month(self):
         """Returns a random month"""
