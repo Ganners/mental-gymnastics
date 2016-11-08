@@ -2,14 +2,15 @@
 
 import os
 import random
+import printer
 
 from games.doomsday import Doomsday
 from games.math import Math
 
 # Registry of games
 games_registry = [
-    # Doomsday(),
-    Math(),
+    Doomsday(), # What is the day of the week
+    Math(),     # What is x * y (or x / y)
 ]
 
 # Language strings
@@ -36,15 +37,15 @@ def main():
         # Output the game
         starting_game = lang['starting_game'].format(game.name)
         seperator = '*' * len(starting_game)
-        print(seperator)
-        print(starting_game)
-        print(seperator + os.linesep)
+        printer.blue(seperator)
+        printer.blue(starting_game)
+        printer.blue(seperator + os.linesep)
 
         # Get a question and validator function for the game
         question, validator = game.play_game()
 
         # Ask it
-        print(question)
+        printer.cyan(question)
 
         # Loop until an answer is correct
         is_correct = False
@@ -58,13 +59,13 @@ def main():
             if is_correct == False:
                 total_incorrect += 1
                 remaining = retry_limit - total_incorrect
-                print(lang['incorrect'].format(remaining))
+                printer.red(lang['incorrect'].format(remaining))
 
         if is_correct == False:
             print(lang['limit_reached'])
             return # Must break out, probable infinite loop reached
 
-        print(lang['correct'])
+        printer.green(lang['correct'])
         total_correct += 1
 
 def _choose_game():
