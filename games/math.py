@@ -43,7 +43,7 @@ class Math:
         # Set the symbol and answers
         if operation == MathOperations.multiplication:
             symbol = "x"
-            correct_answer = x * y
+            correct_answer = self.multiply(x, y)
 
         if operation == MathOperations.division:
             symbol = "÷"
@@ -74,3 +74,36 @@ class Math:
     def _pick_math_operation(self):
         """Chooses an element from the enum MathOperation"""
         return random.choice(list(MathOperations))
+
+    def multiply(self, x, y):
+        """Bit of fun, multiplication without the use of any mathematical symbols"""
+
+        if x == 0 or y == 0:
+            return 0
+
+        # Swap so that x becomes the smallest
+        if x > y:
+            y, x = x, y
+
+        if x == 1:
+            return y
+
+        # Create a stack, avoid recursion
+        stack = []
+
+        while x > 1:
+            stack.append(x)
+            x >>= 1
+
+        multiplied = y
+
+        # Go through the stack, double the value accumulated so far.
+        # If the value at the stack index is odd then add on the
+        # largest number (y)
+        for i in reversed(stack):
+            multiplied <<= 1
+            if (i & 1) == 1:
+                multiplied += y
+
+        return multiplied
+

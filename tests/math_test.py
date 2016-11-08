@@ -3,6 +3,16 @@ from unittest import TestCase
 
 class TestMath(TestCase):
 
+    def test_multiply(self):
+        math = Math()
+
+        # Just use the built in multiply to test
+        for x in range(1, 200):
+            for y in range(1, 200):
+                res = math.multiply(x, y)
+                self.assertEqual(res, x * y)
+
+
     def test_play_game(self):
         math = Math()
 
