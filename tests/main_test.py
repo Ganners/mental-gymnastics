@@ -29,7 +29,7 @@ class TestMain(TestCase):
 
     def test_can_finish(self):
         """Tests that with a passing game, everything runs once and finishes"""
-        main.correct_required = 1
+        main.default_correct_required = 1
         main.main()
 
         # Make some assertions
@@ -39,7 +39,7 @@ class TestMain(TestCase):
 
     def test_can_repeat(self):
         """Tests that if we need 5 games to win, 5 games will play"""
-        main.correct_required = 5
+        main.default_correct_required = 5
         main.main()
 
         # Make some assertions
@@ -50,11 +50,37 @@ class TestMain(TestCase):
     def test_can_ask_many(self):
         """Tests that if we get it wrong constantly, we'll finish but hit a limit"""
         self.mock_validator.return_value = False
-        main.correct_required = 1
+        main.default_correct_required = 1
         main.main()
 
         # We'll hit the retry limit
         self.assertEqual(main._ask_question.call_count, main.retry_limit)
+
+    def test_get_correct_required(self):
+        """Tests some options parsing"""
+
+        # Empty should default
+        args = "".split()
+        self.assertEqual(main._get_correct_required(args),
+                         main.default_correct_required)
+
+        # -r should overwrite
+        args = "-r 3".split()
+        self.assertEqual(main._get_correct_required(args), 3)
+
+        # -r with invalid number should default
+        args = "-r nope".split()
+        self.assertEqual(main._get_correct_required(args),
+                         main.default_correct_required)
+
+        # --required should overwrite
+        args = "--required 3".split()
+        self.assertEqual(main._get_correct_required(args), 3)
+
+        # --required with invalid number should default
+        args = "--required nope".split()
+        self.assertEqual(main._get_correct_required(args),
+                         main.default_correct_required)
 
 if __name__ == '__main__':
     unittest.main()

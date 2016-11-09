@@ -28,7 +28,7 @@ This might go something like:
 
  > cd mental-gymnastics
 
- > echo "# Start mental gymnastics game when session starts\npython ${PWD}/main.py" >> $HOME/.zshrc
+ > echo "# Start mental gymnastics game when session starts\npython ${PWD}/main.py -r 2" >> $HOME/.zshrc
 
 Interface
 ---------
