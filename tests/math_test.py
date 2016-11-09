@@ -33,12 +33,3 @@ class TestMath(TestCase):
         self.assertTrue(validator("100"))
         self.assertFalse(validator("99"))
 
-        # Repeat the test for division
-
-        # Set operation to multiplication
-        math._pick_math_operation = lambda: MathOperations.division
-
-        question, validator = math.play_game()
-        self.assertTrue(validator("1"))
-        self.assertFalse(validator("10"))
-

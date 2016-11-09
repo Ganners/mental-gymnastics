@@ -4,9 +4,7 @@ from enum import Enum
 
 class MathOperations(Enum):
     """Valid operaitons for the Math game"""
-
     multiplication = 1
-    division = 2
 
 class Math:
     """Math is a game which requires being able to multiply or divide numbers
@@ -44,10 +42,6 @@ class Math:
         if operation == MathOperations.multiplication:
             symbol = "x"
             correct_answer = self.multiply(x, y)
-
-        if operation == MathOperations.division:
-            symbol = "÷"
-            correct_answer = int(x / y)
 
         # Generate question title
         question = self._question.format(x, symbol, y)
