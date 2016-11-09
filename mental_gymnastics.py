@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import getopt
 import random
@@ -108,7 +106,4 @@ def _get_correct_required(argv):
                 print(error_not_valid)
 
     return default_correct_required
-
-if __name__ == "__main__":
-    main()
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import main
+import mental_gymnastics
 
 if __name__ == "__main__":
-    main.main()
+    mental_gymnastics.main()
 
