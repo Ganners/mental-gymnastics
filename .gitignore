@@ -5,6 +5,7 @@
 # Python
 *.py[cod]
 __pycache__/
+bin/
 
 # OS
 .DS_Store
