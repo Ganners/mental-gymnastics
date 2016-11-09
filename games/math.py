@@ -70,7 +70,7 @@ class Math:
         return random.choice(list(MathOperations))
 
     def multiply(self, x, y):
-        """Bit of fun, multiplication without the use of any mathematical symbols"""
+        """Bit of fun, multiplication without the use of the '*' or '/'."""
 
         if x == 0 or y == 0:
             return 0

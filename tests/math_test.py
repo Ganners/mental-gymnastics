@@ -7,8 +7,8 @@ class TestMath(TestCase):
         math = Math()
 
         # Just use the built in multiply to test
-        for x in range(1, 200):
-            for y in range(1, 200):
+        for x in range(0, 200):
+            for y in range(0, 200):
                 res = math.multiply(x, y)
                 self.assertEqual(res, x * y)
 
