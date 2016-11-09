@@ -39,9 +39,9 @@ def main():
         # Output the game
         starting_game = lang['starting_game'].format(game.name)
         seperator = '*' * len(starting_game)
-        printer.blue(seperator)
-        printer.blue(starting_game)
-        printer.blue(seperator + os.linesep)
+        printer.blue(seperator + os.linesep +
+                     starting_game + os.linesep +
+                     seperator)
 
         # Get a question and validator function for the game
         question, validator = game.play_game()
